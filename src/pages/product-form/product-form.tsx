@@ -103,7 +103,13 @@ useEffect(()=>{
  
   const createProduct = () =>{
     console.log(formData);
-    DataService.addProduct(formData);
+    if(!productDetail){
+      DataService.addProduct(formData)
+    }else{
+      DataService.updatedProduct(params.id, formData)
+    }
+    
+
   }
 
   const getData=(name:string, data:any)=>{
