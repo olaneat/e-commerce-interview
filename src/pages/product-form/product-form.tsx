@@ -3,9 +3,10 @@ import InputField from "../../components/input-field/input-field";
 import Button from "../../components/btns/btn";
 import DataService from "../../services/product-service";
 import { ProductDTO, ErrMsgDTO } from "../../dto/product.dto";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './style.scss'
 const AddProduct =() =>{
+  const navigate = useNavigate();
   const params:any = useParams();
   const [productId, setProductId] = useState(0);
   const [disabledFlag, setDisableFlag] = useState(true); 
@@ -108,7 +109,7 @@ useEffect(()=>{
     }else{
       DataService.updatedProduct(params.id, formData)
     }
-    
+    navigate('/')
 
   }
 
