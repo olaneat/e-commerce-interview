@@ -33,3 +33,5 @@ React
 1. Clone the project from this repository `https://github.com/olaneat/e-commerce-interview.git`
 2. Install every depencies using `npm install`
 3. Start the server on your local host using `npm start serve`
+
+4) https://www.loom.com/share/532f3297761845f299cde53cf24df569
