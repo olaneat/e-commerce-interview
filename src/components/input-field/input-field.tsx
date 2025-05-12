@@ -7,7 +7,7 @@ const InputField = (props:any)=>{
    let  handleChange =(event:any)=>{
      const value = event.target.value
      console.log(value, 'event')
-    
+  
       props.onChange(props.name, value );
     }
 
@@ -16,24 +16,6 @@ const InputField = (props:any)=>{
     }
 
 
-      const handleImgUpload = (e:  React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
-        // const file = e.target[0];
-         const target = e.target as HTMLInputElement | HTMLTextAreaElement;
-          const { name, value } = target;
-          const files = 'files' in target ? target.files : null;
-
-        console.log(files, 'files')
-        console.log(files)
-    
-        if (!files) return;
-         const reader = new FileReader();
-         console.log(reader, 'red')
-        reader.onload = () => {
-          let imgUrl = reader.result as string
-          console.log(imgUrl, 'url')
-      
-        };
-      }
   
     return (
       <div className="fields">
@@ -94,18 +76,11 @@ const InputField = (props:any)=>{
           : props.type=="file"
           ? <span>
             <span className="field-span">
-            {/* <img src={imgUrl.email} alt="" className="img"/> */}
             <input 
-              // type="file"
-              // name={name}
-              // onChange={onChange}
-              // onBlur={onBlur}
               type="file" 
               name={props.name}
-              // value={props?.value}
-              
               className={`field ${props.err ?'err-field': '' }`} 
-              onChange={handleImgUpload}
+              onChange={handleChange}
               onBlur={handleBlur}
               accept="image/*" 
             />

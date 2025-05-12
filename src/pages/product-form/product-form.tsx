@@ -1,4 +1,4 @@
-import React,{useState, useEffect, ChangeEvent} from "react";
+import React,{useState, useEffect, ChangeEvent, useRef} from "react";
 import InputField from "../../components/input-field/input-field";
 import Button from "../../components/btns/btn";
 import DataService from "../../services/product-service";
@@ -13,6 +13,9 @@ const AddProduct =() =>{
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [imgUrl, setImgUrl] = useState('');
+  const [errors, setErrors] = useState<Partial<ProductDTO>>({});
+   const fileInputRef = useRef<HTMLInputElement>(null);
+
   const [formData, setFormData] = useState<ProductDTO>({
     name: '',
     img:  '',
@@ -65,6 +68,8 @@ const AddProduct =() =>{
     }
 
   }
+
+  
 
 useEffect(()=>{
     if(params.id){
@@ -140,19 +145,59 @@ useEffect(()=>{
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
+ const handleImageUpload = (
+  e: React.ChangeEvent<HTMLInputElement>,
+    setFormData: React.Dispatch<React.SetStateAction<ProductDTO>>,
+    setErrors: React.Dispatch<React.SetStateAction<Partial<ProductDTO>>>,
+    maxSizeMB: number = 5
+  ) => {
+  console.log('helllo') 
 
-  const handleImgUpload = (e: ChangeEvent<HTMLInputElement>) =>{
-    console.log(e)
-    const file = e;
+    if (!e.target) {
+      console.error('Event target is undefined:', e);
+      setErrors((prev) => ({ ...prev, img: 'Invalid input event' }));
+      return;
+    }
 
-    if (!file) return;
-     const reader = new FileReader();
+    const { name, files } = e.target;
+    console.log('Files:', files);
+
+    if (!files || !files[0]) {
+      setErrors((prev) => ({ ...prev, img: 'No file selected' }));
+      return;
+    }
+
+    const file = files[0];
+    if (!file.type.startsWith('image/')) {
+      setErrors((prev) => ({ ...prev, img: 'Please upload an image file' }));
+      return;
+    }
+
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      setErrors((prev) => ({ ...prev, img: `File size exceeds ${maxSizeMB}MB` }));
+      return;
+    }
+
+    const reader = new FileReader();
+    console.log('FileReader created:', reader);
+
     reader.onload = () => {
-      let imgUrl = reader.result as string
-      console.log(imgUrl)
-  
+      const imgUrl = reader.result as string;
+      console.log('Base64 URL:', imgUrl.substring(0, 50) + '...');
+      setFormData((prev) => ({ ...prev, [name]: imgUrl }));
+      setErrors((prev) => ({ ...prev, img: undefined }));
     };
-  }
+
+    console.log(formData, )
+    reader.onerror = () => {
+      console.error('FileReader error:', reader.error);
+      setErrors((prev) => ({ ...prev, img: 'Error reading file' }));
+    };
+
+    reader.readAsDataURL(file);
+    console.log(reader, 'read')
+  };
+
   return (
     <div className="form-container">
       <span className="form-title">Product Form</span>
@@ -200,23 +245,17 @@ useEffect(()=>{
             
             />
         </div>
-        <div className="field">
-          <InputField 
-            name="specification"
-            type="text"
-            placeholder="Enter Product Specification"
-            onChange={getData}
-            onBlur={handleErr}
-            value={formData.specification}
-          />
-        </div>
+        
         <div className="field">
           <InputField 
             name="img"
             type="file"
+           onChange={(e:any) => handleImageUpload(e, setFormData, setErrors)}
             placeholder="select file type"
-            onChange={handleImgUpload}
             onBlur={handleErr}
+            accept="image/*"
+            previewUrl={formData.img}
+            ref={fileInputRef}
 
           />
         </div>
