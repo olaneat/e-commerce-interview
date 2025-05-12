@@ -1,0 +1,181 @@
+
+@media (min-width:801px) {
+    .container{
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 1%;
+        width: 100%;
+        height: 23%;
+    }
+    .contact{
+        display: flex;
+    }
+    .icons{
+        color: black;
+        margin: 12% 1% 7% 7% ;
+        font-size: 1.8em;
+        width: 100%;
+    }
+    .iconTxt{
+        color: white;
+        margin: 1%;
+        font-size: 0.9em;
+        width: 100%;
+    
+    }
+    .get{
+        color: white;
+        margin: 0%;
+        font-size: 1.7em;
+    }
+    .best{
+        color: white;
+        font-size: 0.8em;
+    }
+    .subscribe{
+        display: flex;
+        height: 5%;
+    }
+    .iconDiv{
+        margin: 1% 0% 1% 1%;
+    }
+    .link{
+        display: flex;
+        text-decoration: none;
+    }
+    .iconSpan{
+        background-color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin: 3% 1% 1% 1%;
+    }
+    .heading{
+        font-size: 0.9em;
+        color: white;
+        width: 100%;
+    }
+    .otherInfoBg{
+        background-color: black;
+        width: 100%;
+    }
+    .lowerConatiner{
+        padding: 2% 0% 2% 0%;
+    }
+    .link{
+        color: white;
+        font-size: 0.8em;
+        text-decoration: none;
+        margin: 0.5% 0% 0% 0%;
+    }
+    .link p{
+        margin: 1%;
+    }
+    
+    .download{
+        display: flex;
+    }
+    
+    .appleicon{
+        display: flex;
+        margin: 2% 1% 1% 2%;
+    }
+    .appletxt{
+        color: white;
+        font-size: 1em;
+        margin: 0%;
+    }
+    .downloadicon{
+        font-size: 3em;
+        color: white;
+    }
+}
+@media (max-width:800px) {
+    .container{
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 1%;
+        width: 100%;
+        height: 34%;
+    }
+    .contact{
+        display: flex;
+    }
+    .icons{
+        color: black;
+        margin: 12% 1% 7% 7% ;
+        font-size: 1.8em;
+        width: 100%;
+    }
+    .iconTxt{
+        color: white;
+        margin: 1%;
+        font-size: 0.9em;
+        width: 100%;
+    
+    }
+    .get{
+        color: white;
+        margin: 0%;
+        font-size: 1.7em;
+    }
+    .best{
+        color: white;
+        font-size: 0.8em;
+    }
+    .subscribe{
+        display: flex;
+        height: 5%;
+    }
+    .iconDiv{
+        margin: 1% 0% 1% 1%;
+    }
+    .link{
+        display: flex;
+        text-decoration: none;
+    }
+    .iconSpan{
+        background-color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin: 3% 1% 1% 1%;
+    }
+    .heading{
+        font-size: 0.9em;
+        color: white;
+        width: 100%;
+    }
+    .otherInfoBg{
+        background-color: black;
+        width: 100%;
+    }
+    .lowerConatiner{
+        padding: 5% 0% 2% 0%;
+    }
+    .link{
+        color: white;
+        font-size: 0.8em;
+        text-decoration: none;
+        margin: 0.5% 0% 0% 0%;
+    }
+    .link p{
+        margin: 1%;
+    }
+    
+    .download{
+        display: flex;
+    }
+    
+    .appleicon{
+        display: flex;
+        margin: 2% 1% 1% 2%;
+    }
+    .appletxt{
+        color: white;
+        font-size: 1em;
+        margin: 0%;
+    }
+    .downloadicon{
+        font-size: 3em;
+        color: white;
+    }
+}

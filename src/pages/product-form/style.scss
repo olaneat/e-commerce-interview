@@ -1,0 +1,46 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 64px;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+
+    .form-title{
+        font-size: 16px;
+        color: #333;
+        font-family:'Courier New', Courier, monospace;
+
+    }
+    .product-form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: stretch;
+        gap: 16px;
+        flex-direction: column;
+
+        .field{
+            display: flex;
+            align-self: stretch;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .multiple-fields{
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            align-self: stretch;
+
+            .field{
+                display: flex;
+                justify-content: center;
+                align-self: stretch;
+
+            }
+        }
+    }
+}
