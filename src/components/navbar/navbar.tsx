@@ -145,7 +145,6 @@ const NavBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearc
 
                 </div>
                 <div className="categories">
-                  <span className="title">Popular Categories</span>
                   <div className="cat-list">
                     {/* {
                       categories?.map((catgory:CategoryDTO)=>

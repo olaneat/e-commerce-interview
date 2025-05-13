@@ -34,4 +34,4 @@ React
 2. Install every depencies using `npm install`
 3. Start the server on your local host using `npm start serve`
 
-4) https://www.loom.com/share/532f3297761845f299cde53cf24df569
+4) https://www.loom.com/share/eaa2b1289425478182363a8e113c2abb
