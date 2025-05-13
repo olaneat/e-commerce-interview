@@ -88,7 +88,6 @@ useEffect(()=>{
 
 useEffect(()=>{
     if (productDetail) {
-        console.log('heheh', productDetail)
         setFormData({
           name: productDetail.name,
           img: productDetail.img,
@@ -99,11 +98,9 @@ useEffect(()=>{
         });
         setImgUrl(productDetail.img.startsWith('data:') ? '' : productDetail.img)
       }
-      console.log(formData)
     }, [productDetail]);
  
   const createProduct = () =>{
-    console.log(formData);
     if(!productDetail){
       DataService.addProduct(formData)
     }else{
@@ -114,7 +111,6 @@ useEffect(()=>{
   }
 
   const getData=(name:string, data:any)=>{
-    console.log(data, 'jsjsj')
     setFormData((prev)=>({
       ...prev, 
       [name]:data
@@ -125,49 +121,20 @@ useEffect(()=>{
     }
   }
 
-  const getImg = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-     if (!e.target) {
-      // console.error('Event target is undefined:', e);
-      return;
-    }
 
-    
-
-    const { name, value, files } = e.target as HTMLInputElement;
-    if (name === 'img' && files && files[0]) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64String = reader.result as string;
-        console.log('File uploaded, base64:', base64String.substring(0, 50) + '...');
-        setFormData((prev) => ({ ...prev, img: base64String }));
-        setImgUrl(''); // Clear URL input
-      };
-      reader.onerror = () => {
-        setErrMsg((prev) => ({ ...prev, img: 'Error reading file' }));
-      };
-      reader.readAsDataURL(files[0]);
-    } else if (name === 'imgUrl') {
-      setImgUrl(value);
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
  const handleImageUpload = (
   e: React.ChangeEvent<HTMLInputElement>,
     setFormData: React.Dispatch<React.SetStateAction<ProductDTO>>,
     setErrors: React.Dispatch<React.SetStateAction<Partial<ProductDTO>>>,
     maxSizeMB: number = 5
   ) => {
-  console.log('helllo') 
 
     if (!e.target) {
-      console.error('Event target is undefined:', e);
       setErrors((prev) => ({ ...prev, img: 'Invalid input event' }));
       return;
     }
 
     const { name, files } = e.target;
-    console.log('Files:', files);
 
     if (!files || !files[0]) {
       setErrors((prev) => ({ ...prev, img: 'No file selected' }));
@@ -186,23 +153,18 @@ useEffect(()=>{
     }
 
     const reader = new FileReader();
-    console.log('FileReader created:', reader);
 
     reader.onload = () => {
       const imgUrl = reader.result as string;
-      console.log('Base64 URL:', imgUrl.substring(0, 50) + '...');
       setFormData((prev) => ({ ...prev, [name]: imgUrl }));
       setErrors((prev) => ({ ...prev, img: undefined }));
     };
 
-    console.log(formData, )
     reader.onerror = () => {
-      console.error('FileReader error:', reader.error);
       setErrors((prev) => ({ ...prev, img: 'Error reading file' }));
     };
 
     reader.readAsDataURL(file);
-    console.log(reader, 'read')
   };
 
   return (

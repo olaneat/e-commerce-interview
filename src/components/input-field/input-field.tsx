@@ -6,8 +6,6 @@ const InputField = (props:any)=>{
   
    let  handleChange =(event:any)=>{
      const value = event.target.value
-     console.log(value, 'event')
-  
       props.onChange(props.name, value );
     }
 

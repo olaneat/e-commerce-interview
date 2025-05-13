@@ -8,6 +8,7 @@ import hidePswd from '../assets/icons/hide-pswd.svg'
 import email from '../assets/icons/mail.svg'
 import user from '../assets/icons/user.svg'
 import search from '../assets/icons/search.svg'
+import toggleIcon from '../assets/icons/menu-icon.svg'
 
 
 const Icons= {
@@ -20,7 +21,8 @@ const Icons= {
     hidePswd,
     visiblePswd,
     user,
-    search
+    search,
+    toggleIcon
 }
 
 export default Icons

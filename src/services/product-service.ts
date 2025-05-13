@@ -28,12 +28,11 @@ const updatedProduct = (productId:string, product:ProductDTO) =>{
     let productIndex = products.findIndex((product) => product.id == productId);
     
     if(productIndex==-1){
-      console.log('prouct not found');
       return false;
     }
-  
     products[productIndex] ={...products[productIndex], ...product};
-    
+    console.log(products, 'pro')
+    localStorage.setItem('products', JSON.stringify(products));
     return true;
  }
  catch(err){

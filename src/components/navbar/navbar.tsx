@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import  './navbar.scss'
 import { Link } from "react-router-dom";
 import InputField from "../input-field/input-field";
+import Icons from "../../constant/imgs.constant";
 const NavBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (query: string) => void }) =>{
-
+  const icons = Icons
   const getData =(name:string, value:string)=>{
     if(name=='search' && value !== ''){
       console.log(value, 'val')
@@ -112,32 +113,14 @@ const NavBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearc
           </div>
           <div className="nav-content" >
             <span className="txt" >Home</span>
-            <span  className="txt"  onClick={accountToogle}>
-              Account
-              
-              { dropDown ? (
-              <div className="drop-down">
-
-                <Link className="link" to="sign-in">
-                  <span className="items" >Login</span>
-                </Link>
-                <Link className="link" to="registration">
-                  <span className="items" >Signup</span>
-                </Link>
-                
-
-              </div>
-            ):(
-              <div></div>
-            )}
+            <span  >
+              <Link className="txt" to="add-new-product">
+                <span className="txt" >Add New Item</span>
+              </Link>
+             
             </span>
             
-            <Link to="/cart">
-              <div className="icon">
-                <img src="icons/cart.svg" alt="" />
-              </div>
-                
-            </Link>
+          
 
           </div>
           </div>
@@ -149,19 +132,16 @@ const NavBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearc
                     <span className="close">X</span>
                     <span className="name">NeatFarmz</span>
                   </div>
-                  <Link to="/cart">
-                  <div className="icon">
-                    <img src="icons/cart.svg" alt="" />
-                  </div>
-                
-                </Link>
-
+                  
                 </div>
 
                 <div className="list">
-                  <span className="item"> Home</span>
-                  <span className="item"> Login</span>
-                  <span className="item">  Register</span>
+                  <Link className="txt" to="">
+                    <span className="txt" >Home</span>
+                  </Link>
+                  <Link className="txt" to="add-new-product">
+                    <span className="txt" >Add New Item</span>
+                  </Link>
 
                 </div>
                 <div className="categories">
@@ -179,14 +159,9 @@ const NavBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearc
               :
               <div className="menu-div">
                 <span className="menu-bar" onClick={toggleSidebar}>
-                  <img src="icons/menu-icon.svg" alt="" />
+                  <img src={icons.toggleIcon} alt="" />
                 </span>
-                <Link to={'cart'}>
-                  <div className="icon">
-                    <img src="/icons/cart.svg" alt="" />
-                  </div>
                 
-                </Link>
               </div>
             }
             

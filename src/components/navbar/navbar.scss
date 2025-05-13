@@ -75,6 +75,8 @@
         color: #fff;
         font-size: 13px;
         cursor: pointer;
+        text-decoration: none;
+        
 
     }
     .drop-down{
@@ -212,7 +214,12 @@
         gap: 12px;
         justify-content: flex-start;
         align-self: center;
-
+        .txt{
+            text-decoration: none;
+            color: #333;
+            font: 10.28px;
+            padding: 8px;
+        }
         .item{
             display: flex;
             justify-items: flex-start;
